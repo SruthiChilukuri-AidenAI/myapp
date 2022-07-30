@@ -17,7 +17,7 @@ pipeline {
               withCredentials([string(credentialsId: 'DOCKERHUB_CREDENTIALS', variable: 'DOCKERHUB_CREDENTIALS')]) {
                 sh 'docker login -u sruthikeerthana -p ${DOCKERHUB_CREDENTIALS}'
                 
-                sh 'docker push sruthikeerthana/react-image:${BUILD_NUMBER}'
+                sh 'docker push sruthikeerthana/react-image'
               }
             }
         }
