@@ -12,5 +12,14 @@ pipeline {
                 sh 'docker build -t sruthikeerthana/react-image .'
             }
         }
+        stage ('Docker Login and Push') {
+            steps {
+              withCredentials([string(credentialsId: 'DOCKERHUB_CREDENTIALS', variable: 'DOCKERHUB_CREDENTIALS')]) {
+                sh 'docker login -u sruthikeerthana -p ${DOCKERHUB_CREDENTIALS}'
+                
+                sh 'docker push sruthikeerthana/react-image:${BUILD_NUMBER}'
+              }
+            }
+        }
     }
 }
