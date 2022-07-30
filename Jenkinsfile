@@ -9,7 +9,7 @@ pipeline {
         }
         stage ('Build Docker Image') {
             steps {
-                sh 'docker build -t sruthikeerthana/react-image .'
+                sh 'docker build -t sruthikeerthana/react-image:${BUILD_NUMBER} .'
             }
         }
         stage ('Docker Login and Push') {
@@ -17,7 +17,7 @@ pipeline {
               withCredentials([string(credentialsId: 'DOCKERHUB_CREDENTIALS', variable: 'DOCKERHUB_CREDENTIALS')]) {
                 sh 'docker login -u sruthikeerthana -p ${DOCKERHUB_CREDENTIALS}'
                 
-                sh 'docker push sruthikeerthana/react-image'
+                  sh 'docker push sruthikeerthana/react-image:${BUILD_NUMBER}'
               }
             }
         }
