@@ -5,6 +5,7 @@ pipeline {
         registry = "sruthikeerthana/my-image"
         registryCredentials ="DOCKERHUB_CREDENTIALS"
         dockerImage = ''
+    }
     
     stages {
         stage ('Git Clone'){
