@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-application
+  namespace: my-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-application
+  template:
+    metadata:
+      labels:
+        app: my-application
+    spec:
+      containers:
+      - name: my-application
+        image: sruthikeerthana/jenkproimage
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+---
+# This section will create a service in the Kubernetes cluster
+# so that the deployment can be accessed from the outside
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-application
+  namespace: my-namespace
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 31234
+  selector:
+    app: my-application
+  type: NodePort
