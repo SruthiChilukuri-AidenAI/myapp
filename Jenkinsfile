@@ -1,6 +1,10 @@
 pipeline {
     agent any
     
+    environment {
+        registry = "sruthikeerthana/my-image"
+        registryCredentials ="
+    
     stages {
         stage ('Git Clone'){
             steps {
