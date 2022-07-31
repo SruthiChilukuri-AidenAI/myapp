@@ -3,7 +3,8 @@ pipeline {
     
     environment {
         registry = "sruthikeerthana/my-image"
-        registryCredentials ="
+        registryCredentials ="DOCKERHUB_CREDENTIALS"
+        dockerImage = ''
     
     stages {
         stage ('Git Clone'){
@@ -13,16 +14,16 @@ pipeline {
         }
         stage ('Build Docker Image') {
             steps {
-                sh 'docker build -t sruthikeerthana/react-image:${BUILD_NUMBER} .'
+                dockerImage = docker.build registry + ":${BUILD_NUMBER}"
             }
         }
         stage ('Docker Login and Push') {
             steps {
-              withCredentials([string(credentialsId: 'DOCKERHUB_CREDENTIALS', variable: 'DOCKERHUB_CREDENTIALS')]) {
-                sh 'docker login -u sruthikeerthana -p ${DOCKERHUB_CREDENTIALS}'
-                
-                  sh 'docker push sruthikeerthana/react-image:${BUILD_NUMBER}'
-              }
+                script {
+                    docker.withRegistry( '', registryCredential ) {
+                         dockerImage.push()
+                     }
+                }
             }
         }
     }
