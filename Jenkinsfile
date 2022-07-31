@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         registry = "sruthikeerthana/my-image"
-        registryCredential ="DOCKERHUB_CREDENTIALS"
+        registryCredential ='DOCKERHUB_CREDENTIALS'
         dockerImage = ''
     }
     
