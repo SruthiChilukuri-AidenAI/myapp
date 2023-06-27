@@ -25,6 +25,11 @@ jobs:
       contents: read
       packages: write
     steps:
+      - name: Trigger build and deploy
+        uses: distributhor/webhook-action@v1
+        with:
+          url: ${{ secrets.BUILD_DEPLOY_WEBHOOK_URL }}
+          
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
