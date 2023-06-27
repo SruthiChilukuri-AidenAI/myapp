@@ -31,7 +31,7 @@
                 <artifactId>frontend-maven-plugin</artifactId>
                 <version>1.6</version>
                 <configuration>
-                    <installDirectory>target</installDirectory>
+                    <installDirectory>target</installDirectory> 
                 </configuration>
                 <executions>
                     <execution>
