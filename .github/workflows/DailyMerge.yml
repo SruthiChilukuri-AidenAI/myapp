@@ -32,3 +32,8 @@ jobs:
           else
             echo "No Pull Request found" 
           fi
+          
+      - name: Merge feature branch
+        run: |
+          # Merge the feature branch into the integration branch
+          git merge TestMerging
