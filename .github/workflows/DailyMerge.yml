@@ -1,0 +1,33 @@
+name: Daily Merge to Integration
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - closed
+    
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout integration branch
+        uses: actions/checkout@v3
+        with:
+          ref: DevOps
+          
+      - name: Check if pull request exists
+        id: check-pr
+        run: |
+          PR_NUMBER=$(echo "${{ github.event.pull_request.url }}" | awk -F/ '{print $NF}')
+          echo "PR: $PR_NUMBER"
+          if [[ -n $PR_NUMBER ]]; then
+            echo "Pull Request #$PR_NUMBER exists"
+          else
+            echo "No Pull Request found" 
+          fi
