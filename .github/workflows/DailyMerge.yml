@@ -36,4 +36,4 @@ jobs:
       - name: Merge feature branch
         run: |
           # Merge the feature branch into the integration branch
-          git merge master
+          git merge master 
