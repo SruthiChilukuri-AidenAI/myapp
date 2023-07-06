@@ -6,8 +6,7 @@ on:
   #workflow_dispatch: # Manual trigger
   # Triggers the workflow every 5 minutes
   schedule:
-    - cron: "2/5 * * * *"
-    - timezone: "IST"
+    - cron: "1/10 * * * *"
 
 jobs: 
   merge:
