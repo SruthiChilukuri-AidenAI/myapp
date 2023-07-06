@@ -1,4 +1,4 @@
-name: Daily Merge to Integration
+name: Sample Testing2
 
 on:
   push:
