@@ -1,0 +1,17 @@
+name: Daily Merge to Integration
+
+on:
+  push:
+  pull_request:
+  #workflow_dispatch: # Manual trigger
+  # Triggers the workflow every 5 minutes
+  schedule:
+    - cron: "5 0 * * *"
+
+jobs: 
+  merge:
+    runs-on: ubuntu-latest 
+
+    steps:
+      - name: Checkout integration branch
+        uses: actions/checkout@v3
