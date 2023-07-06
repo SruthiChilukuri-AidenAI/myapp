@@ -6,7 +6,7 @@ on:
   #workflow_dispatch: # Manual trigger
   # Triggers the workflow every 5 minutes
   schedule:
-    - cron: "*/2 * * * *"
+    - cron: "2 * * * *"
 
 jobs: 
   merge:
