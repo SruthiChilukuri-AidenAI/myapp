@@ -1,0 +1,17 @@
+name: Sample testmerging
+
+on:
+  #push:
+  #pull_request:
+  #workflow_dispatch: # Manual trigger
+  # Triggers the workflow every 5 minutes
+  schedule:
+    - cron: "*/2 * * * *"
+
+jobs: 
+  merge:
+    runs-on: ubuntu-latest 
+
+    steps:
+      - name: Checkout integration branch
+        uses: actions/checkout@v3
